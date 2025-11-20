@@ -22,25 +22,19 @@ class _RegisterState extends State<Register> {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _age = TextEditingController();
   final TextEditingController _email = TextEditingController();
-  final TextEditingController _schoolid = TextEditingController();
+  final TextEditingController _phone = TextEditingController();
   final TextEditingController _pass = TextEditingController();
   final TextEditingController _confirmPass = TextEditingController();
-  String _department = "";
-  String _year = "";
-  String _section = "";
   bool _isPassVisible = false;
   bool _isConfirmPassVisible = false;
 
   Future _register()async{
-    DatabaseReference usersRef = database.ref('students');
+    DatabaseReference usersRef = database.ref('mobile_users');
     await usersRef.push().set({
       "name": _name.text,
       "age": _age.text,
       "email": _email.text,
-      "school_id": _schoolid.text,
-      "department": _department,
-      "year": _year,
-      "section": _section,
+      "phone": _phone.text,
       "password": _pass.text,
     });
   }
@@ -50,7 +44,7 @@ class _RegisterState extends State<Register> {
     // TODO: implement dispose
     _name.dispose();
     _age.dispose();
-    _schoolid.dispose();
+    _phone.dispose();
     super.dispose();
   }
 
@@ -151,12 +145,14 @@ class _RegisterState extends State<Register> {
             height: 10,
           ),
           TextField(
-            controller: _schoolid,
+            controller: _phone,
             style: TextStyle(fontFamily: "OpenSans"),
             keyboardType: TextInputType.number,
+            maxLength: 11,
             decoration: InputDecoration(
+              counterText: "",
               contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
-              hintText: 'School ID',
+              hintText: 'Phone number',
               hintStyle: TextStyle(fontFamily: "OpenSans",color: Colors.grey),
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(1000)
@@ -173,147 +169,6 @@ class _RegisterState extends State<Register> {
             onChanged: (text) {
 
             },
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            decoration: ShapeDecoration(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                side: BorderSide(width: 1.0, style: BorderStyle.solid, color: colors.blue.withOpacity(0.1)),
-                borderRadius: BorderRadius.all(Radius.circular(1000)),
-              ),
-            ),
-            child: DropdownButton<String>(
-              focusColor: Colors.white,
-              style: TextStyle(fontFamily: "OpenSans",fontSize: 16,color: Colors.black),
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              items: <String>[
-                'College of Arts and Science',
-                'College of Education',
-                'College of Nursing',
-                'College of Engineering'
-              ].map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value,style: TextStyle(fontFamily: "OpenSans",fontSize: 15),),
-                );
-              }).toList(),
-              hint: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(_department.isEmpty
-                    ? 'Department'
-                    : _department,style: TextStyle(fontFamily: "OpenSans",fontSize: 16,color: _department.isEmpty ? Colors.grey : Colors.black),),
-              ),
-              borderRadius: BorderRadius.circular(10),
-              underline: SizedBox(),
-              isExpanded: true,
-              onChanged: (value) {
-                if (value != null) {
-                  setState(() {
-                    _department = value;
-                  });
-                }
-              },
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1.0, style: BorderStyle.solid, color: colors.blue.withOpacity(0.1)),
-                      borderRadius: BorderRadius.all(Radius.circular(1000)),
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    focusColor: Colors.white,
-                    style: TextStyle(fontFamily: "OpenSans",fontSize: 16,color: Colors.black),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    items: <String>[
-                      '1st year',
-                      '2nd year',
-                      '3rd year',
-                      '4th year'
-                    ].map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value,style: TextStyle(fontFamily: "OpenSans",fontSize: 15),),
-                      );
-                    }).toList(),
-                    hint: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(_year.isEmpty
-                          ? 'Year'
-                          : _year,style: TextStyle(fontFamily: "OpenSans",fontSize: 16,color: _department.isEmpty ? Colors.grey : Colors.black),),
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                    underline: SizedBox(),
-                    isExpanded: true,
-                    onChanged: (value) {
-                      if (value != null) {
-                        setState(() {
-                          _year = value;
-                        });
-                      }
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Container(
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1.0, style: BorderStyle.solid, color: colors.blue.withOpacity(0.1)),
-                      borderRadius: BorderRadius.all(Radius.circular(1000)),
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    focusColor: Colors.white,
-                    style: TextStyle(fontFamily: "OpenSans",fontSize: 16,color: Colors.black),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    items: <String>[
-                      'A',
-                      'B',
-                      'C',
-                      'D',
-                      'E',
-                    ].map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value,style: TextStyle(fontFamily: "OpenSans",fontSize: 15),),
-                      );
-                    }).toList(),
-                    hint: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(_section.isEmpty
-                          ? 'Section'
-                          : _section,style: TextStyle(fontFamily: "OpenSans",fontSize: 16,color: _department.isEmpty ? Colors.grey : Colors.black),),
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                    underline: SizedBox(),
-                    isExpanded: true,
-                    onChanged: (value) {
-                      if (value != null) {
-                        setState(() {
-                          _section = value;
-                        });
-                      }
-                    },
-                  ),
-                ),
-              )
-            ],
           ),
           SizedBox(
             height: 10,
@@ -394,10 +249,10 @@ class _RegisterState extends State<Register> {
             },
           ),
           SizedBox(
-            height: 50,
+            height: 80,
           ),
           materialbutton.materialButton(fontsize: 15,backColor: colors.blue,"REGISTER", (){
-            if(_name.text.isEmpty || _age.text.isEmpty || _email.text.isEmpty || _schoolid.text.isEmpty || _department == "" || _year == "" || _section == ""){
+            if(_name.text.isEmpty || _age.text.isEmpty || _email.text.isEmpty || _phone.text.isEmpty){
               _snackbarMessage.snackbarMessage(context, message: "All fields are required.", is_error: true);
             }else if(_pass.text != _confirmPass.text){
               _snackbarMessage.snackbarMessage(context, message: "Password and confirm password did not match.", is_error: true);
