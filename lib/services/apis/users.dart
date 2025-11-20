@@ -10,6 +10,7 @@ class UsersApi{
           final data = dataSnapshot.value;
           if (data is Map) {
             usersModel.update(data: data.values.toList());
+            print("STUDENTS ${data.values}");
           } else if (data is List) {
             usersModel.update(data: data);
           }

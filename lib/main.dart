@@ -56,8 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _usersApi.getUsers().whenComplete(()async{
         SharedPreferences prefs = await SharedPreferences.getInstance();
         Future.delayed(Duration(seconds: 5), ()async {
-          List _user = usersModel.value.where((s) => s["email"] == prefs.getString('email') && s["pass"] == prefs.getString('pass')).toList();
-          print("GET CURRENT USER ${_user}");
+          List _user = usersModel.value.where((s) => s["email"] == prefs.getString('email') && s["password"] == prefs.getString('pass')).toList();
+          print("GET LOGGED USER ${_user}");
           if(_user.isNotEmpty){
             usersModel.updateUser(data: _user.first);
             _routes.navigator_pushreplacement(context, Landing());

@@ -1,6 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:students/screens/notifications/notifications.dart';
+import 'package:students/screens/profile/profile.dart';
 import 'package:students/screens/reports/reports.dart';
+import 'package:students/screens/search/search.dart';
+import 'package:students/services/routes.dart';
 import 'package:students/utils/palettes/app_colors.dart' hide Colors;
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
@@ -13,8 +17,7 @@ class Landing extends StatefulWidget {
 }
 
 class _LandingState extends State<Landing> {
-  final _borrow = FirebaseDatabase.instance.ref().child('borrow');
-  final _return = FirebaseDatabase.instance.ref().child('return');
+  final Routes _routes = new Routes();
   final _controller = PageController();
   int _selected = 0;
 
@@ -45,21 +48,28 @@ class _LandingState extends State<Landing> {
           actions: [
             IconButton(
               icon: Icon(Icons.search),
-              onPressed: (){},
+              onPressed: (){
+                _routes.navigator_push(context, Search());
+              },
             ),
             IconButton(
               icon: Badge(child: Icon(Icons.notifications_none), label: Text("2"),),
-              onPressed: (){},
+              onPressed: (){
+                _routes.navigator_push(context, Notifications());
+              },
+            ),
+            SizedBox(
+              width: 10,
             ),
             GestureDetector(
               onTap: (){
-
+                _routes.navigator_push(context, Profile());
               },
               child: SizedBox(
                 width: 35,
                 height: 35,
                 child: CircleAvatar(
-                  backgroundImage: NetworkImage("https://img.freepik.com/free-photo/portrait-delighted-hipster-male-student-with-crisp-hair_176532-8157.jpg?semt=ais_hybrid&w=740&q=80"),
+                  backgroundImage: NetworkImage("https://dailykar.com/wp-content/uploads/2025/02/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg"),
                 ),
               ),
             ),

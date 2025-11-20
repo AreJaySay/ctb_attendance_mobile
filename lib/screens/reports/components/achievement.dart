@@ -25,6 +25,8 @@ class _AchievementState extends State<Achievement> {
         ],
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Expanded(
             child: Padding(
@@ -33,13 +35,13 @@ class _AchievementState extends State<Achievement> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Achievement",style: TextStyle(fontFamily: "OpenSans",fontSize: 16,fontWeight: FontWeight.w600,color: Colors.grey.shade400),),
+                  Text("ACHIEVEMENTS",style: TextStyle(fontFamily: "OpenSans",fontWeight: FontWeight.w600,color: Colors.grey.shade400),),
                   Spacer(),
-                  Text("42",style: TextStyle(fontFamily: "OpenSans",fontSize: 35),),
+                  Text("42",style: TextStyle(fontFamily: "OpenSans",fontSize: 30, fontWeight: FontWeight.w600),),
                   SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
-                  Text("MEDAL POINTS",style: TextStyle(fontFamily: "OpenSans",fontSize: 13,fontWeight: FontWeight.w600,color: Colors.grey.shade400),),
+                  Text("Medal Points",style: TextStyle(fontFamily: "OpenSans",fontWeight: FontWeight.w500,color: Colors.grey.shade400),),
                 ],
               ),
             ),
@@ -47,7 +49,7 @@ class _AchievementState extends State<Achievement> {
           FlutterSalesGraph(
             salesData: [65, 35, 40],
             labels: ['Gold', 'Silver', 'Bronze'],
-            maxBarHeight: 100.0,
+            maxBarHeight: 160.0,
             barWidth: 35.0,
             colors: [Colors.yellowAccent, Colors.grey, Colors.orange],
             dateLineHeight: 20.0,
