@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "254020979059",
+    "firebase_url": "https://ctb-attendance-monitorin-4ead4-default-rtdb.firebaseio.com",
+    "project_id": "ctb-attendance-monitorin-4ead4",
+    "storage_bucket": "ctb-attendance-monitorin-4ead4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254020979059:android:0174882784674fa78bdd06",
+        "android_client_info": {
+          "package_name": "com.attendancemonitoring.students"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM0F2XXZVJj6FIReNr61QdS9R5NalcjR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254020979059:android:ca3942d922258b618bdd06",
+        "android_client_info": {
+          "package_name": "com.attendancemonitoring.web"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM0F2XXZVJj6FIReNr61QdS9R5NalcjR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
